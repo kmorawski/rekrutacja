@@ -41,4 +41,14 @@ class User
     {
         return $this->email;
     }
+
+    /**
+     * Is active.
+     *
+     * @return bool
+     */
+    public function isActive(): bool
+    {
+        return $this->status !== UserStatus::UN_ACTIVE;
+    }
 }
