@@ -3,6 +3,7 @@
 namespace App\Core\User\Domain;
 
 use App\Common\EventManager\EventsCollectorTrait;
+use App\Core\User\Domain\Status\UserStatus;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -19,6 +20,11 @@ class User
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private ?int $id;
+
+    /**
+     * @ORM\Column(type="string", length=12, nullable=false, enumType="\App\Core\User\Domain\Status\UserStatus")
+     */
+    private UserStatus $status;
 
     /**
      * @ORM\Column(type="string", length=300, nullable=false)
