@@ -43,6 +43,16 @@ class User
         return $this->email;
     }
 
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getStatus(): UserStatus
+    {
+        return $this->status;
+    }
+
     /**
      * Is active.
      *

@@ -6,6 +6,7 @@ use App\Core\User\Domain\Exception\UserNotFoundException;
 use App\Core\User\Domain\Repository\UserRepositoryInterface;
 use App\Core\User\Domain\Status\UserStatus;
 use App\Core\User\Domain\User;
+use Doctrine\DBAL\ParameterType;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\NonUniqueResultException;
 use Psr\EventDispatcher\EventDispatcherInterface;
@@ -69,7 +70,7 @@ class DoctrineUserRepository implements UserRepositoryInterface
             ->select('u')
             ->from(User::class, 'u')
             ->where('u.status = :user_status')
-            ->setParameter(':user_status', $userStatus->value)
+            ->setParameter(':user_status', $userStatus->value, ParameterType::STRING)
             ->getQuery()
             ->getResult();
     }
